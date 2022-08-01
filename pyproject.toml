@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flight-utils"
+version = "0.0.1"
+authors = [
+  { name="Author", email="author@example.com" },
+]
+description = "A small example package"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/mwebb4/PySparkDataproc"
