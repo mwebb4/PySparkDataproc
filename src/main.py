@@ -9,4 +9,4 @@ if __name__=="__main__":
     parser.add_argument("--word", help="Word to print")
     args, _ = parser.parse_known_args()
     test_function(args.word)
-    spark, sc = get_spark(appName="flight-model")
+    spark, sc = get_spark(appName="flightmodel")
