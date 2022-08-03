@@ -6,8 +6,6 @@ CODE_FOLDER="flight_utils"
 VERSION="1"
 DEPS_BUCKET="arctic-pad-dproc-jobs"
 MAIN_PYTHON_FILE="main.py"
-CONTAINER_NAME="flights-train-dproc"
-CONTAINER_TAG="1.2"
 IMAGE_ID="gcr.io/$PROJECT_ID/$CONTAINER_NAME/$CONTAINER_TAG"
 SVC_ACCT="svcacct-dataproc"
 
