@@ -1,8 +1,10 @@
 #!/bin/sh
 PROJECT_ID="arctic-pad-357221"
-LOG_CLUSTER="arctic-pad-dprc-clst-01"
 REGION="us-central1"
-BUCKET="arctic-pad-dproc-jobs"
+CODE_BUCKET="arctic-pad-default"
+CODE_FOLDER="flight_utils"
+VERSION="1"
+DEPS_BUCKET="arctic-pad-dproc-jobs"
 MAIN_PYTHON_FILE="main.py"
 CONTAINER_NAME="flights-train-dproc"
 CONTAINER_TAG="1.2"
@@ -15,11 +17,11 @@ gcloud auth activate-service-account "$SVC_ACCT@$PROJECT_ID.iam.gserviceaccount.
 
 
 echo "Submitting job to cluster..."
-gcloud dataproc batches submit pyspark ./src/$MAIN_PYTHON_FILE \
+gcloud dataproc batches submit pyspark "gs://$CODE_BUCKET/$CODE_FOLDER/$VERSION/dist/$MAIN_PYTHON_FILE" \
+    --py-files="gs://$CODE_BUCKET/$CODE_FOLDER/$VERSION//dist/deps.zip" \
     --region=$REGION \
     --project=$PROJECT_ID \
-    --container-image=$IMAGE_ID \
-    --deps-bucket=$BUCKET \
+    --deps-bucket=$DEPS_BUCKET \
     --service-account="$SVC_ACCT@$PROJECT_ID.iam.gserviceaccount.com" \
     -- \
     --word="A WORD?!"
